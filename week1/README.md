@@ -55,7 +55,7 @@ df.describe()
 - Xử lý cột `DT` (Dân tộc): Thay thế giá trị thiếu bằng `0.0`
 - Loại bỏ các dòng có giá trị thiếu ở các cột khác
 
-### 3. Tạo Các Biến Phái Sinh
+### 3. Tạo Các Biến Phát Sinh
 
 #### a) Điểm Trung Bình Môn (TBM)
 
