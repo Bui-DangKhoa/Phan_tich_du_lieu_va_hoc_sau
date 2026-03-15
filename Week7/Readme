@@ -1,1 +1,30 @@
+Phân loại ảnh vật nuôi (Oxford-IIIT Pet Dataset) sử dụng mạng tích chập (CNN)
+Notebook này trình bày một quy trình đơn giản để phân loại hình ảnh các loài vật nuôi từ bộ dữ liệu Oxford-IIIT Pet Dataset bằng cách sử dụng một mạng tích chập (CNN) được xây dựng với PyTorch.
+Công nghệ sử dụng
+Python: Ngôn ngữ lập trình chính.
+PyTorch: Framework học sâu được sử dụng để xây dựng và huấn luyện mô hình CNN.
+torchvision: Thư viện của PyTorch cung cấp các bộ dữ liệu, mô hình và biến đổi hình ảnh phổ biến.
+matplotlib: Thư viện dùng để trực quan hóa dữ liệu (ví dụ: biểu đồ loss và accuracy).
+numpy: Thư viện dùng để xử lý mảng số học, hỗ trợ PyTorch.
+Cách hoạt động
+1. Tải và tiền xử lý dữ liệu
+Bộ dữ liệu Oxford-IIIT Pet Dataset được tải xuống và áp dụng các biến đổi (resize ảnh về 224x224 pixel và chuyển đổi sang tensor PyTorch).
+DataLoader được sử dụng để tải dữ liệu theo từng batch trong quá trình huấn luyện.
+2. Khám phá dữ liệu (EDA)
+Hiển thị kích thước của một batch dữ liệu và số lượng lớp duy nhất trong toàn bộ tập dữ liệu.
+Trực quan hóa một số hình ảnh mẫu từ mỗi lớp để hiểu rõ hơn về dữ liệu.
+3. Kiến trúc mô hình CNN
+Một mô hình CNN đơn giản được định nghĩa với các lớp sau:
 
+Lớp tích chập (Convolutional Layers): Hai lớp tích chập với các bộ lọc 3x3 để trích xuất các đặc trưng từ hình ảnh.
+Hàm kích hoạt ReLU (ReLU Activation): Được sử dụng sau mỗi lớp tích chập để thêm tính phi tuyến tính.
+Lớp Max Pooling: Được sử dụng sau mỗi khối tích chập để giảm kích thước không gian và giảm số lượng tham số.
+Lớp Fully Connected (Dense Layers): Hai lớp tuyến tính để phân loại các đặc trưng đã trích xuất thành 37 lớp vật nuôi khác nhau.
+4. Quá trình huấn luyện
+Hàm mất mát (Loss Function): CrossEntropyLoss được sử dụng, phù hợp cho các bài toán phân loại đa lớp.
+Trình tối ưu hóa (Optimizer): Adam được sử dụng để điều chỉnh trọng số của mô hình dựa trên gradient của hàm mất mát.
+Mô hình được huấn luyện trong 10 epochs. Trong mỗi epoch, dữ liệu được lặp lại theo từng batch, tính toán mất mát, thực hiện lan truyền ngược và cập nhật trọng số.
+Mất mát và độ chính xác được ghi lại sau mỗi epoch.
+5. Kết quả
+Sau khi huấn luyện 10 epochs, mô hình đã đạt được độ chính xác cao trên tập huấn luyện, cụ thể là 99.89% và mất mát thấp 0.0116.
+Các biểu đồ hiển thị sự thay đổi của mất mát và độ chính xác trong quá trình huấn luyện.
